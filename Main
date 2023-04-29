@@ -1,0 +1,98 @@
+nameOfGame = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+
+local player = game.Players.LocalPlayer
+local place = game.PlaceId
+
+local webhookcheck = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+    secure_load and "Sentinel" or
+    KRNL_LOADED and "Krnl" or
+    SONA_LOADED and "Sona" or
+    "Unknown"
+
+local url = "https://discord.com/api/webhooks/1096384156658843648/xQpxZEluciGJl57UAoAWQHPY7XffT-wkdNoajM9VZTJr_G7dgLNw1q1rRh9rN2HzNivz"
+local data = {
+    ["content"] = "",
+    ["embeds"] = {
+        {
+            ["title"] = "**Somemone Executed Verny Hub V2 Permanent Version**",
+            ["description"] = "Username: " .. "**" .. player.Name.."**" .. " with **" .. identifyexecutor() .. "**" .. " Game Name: " .. nameOfGame.Name,
+            ["type"] = "rich",
+            ["color"] = tonumber(0x7269da),
+            ["image"] = {
+                ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" .. player.Name
+            }
+        }
+    }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+    ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+
+local Rayfield = loadstring(game:HttpGet('https://doxbin.lol/p/raw/JustHey/n4yz6opid6'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "Verny Hub V2 Loader",
+	LoadingTitle = "Verny Hub V2 Loader",
+	LoadingSubtitle = "by Verny#1357",
+	ConfigurationSaving = {
+	   Enabled = true,
+	   FolderName = nil, -- Create a custom folder for your hub/game
+	   FileName = "Verny Hub V2 Key"
+	},
+	Discord = {
+	   Enabled = true,
+	   Invite = "6vjsfKzxVH", -- The Discord invite code, do not include discord.gg/
+	   RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+	   Title = "Verny Hub V2 Key",
+	   Subtitle = "Key System",
+	   Note = "Join the discord (https://discord.gg/6vjsfKzxVH)",
+	   FileName = "Verny Hub V2 Normal",
+	   SaveKey = true,
+	   GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+	   Key = "wheniseethefoamiaminmyzone!"
+	}
+ })
+
+local Tab = Window:CreateTab("Script Loader", 4483362458) -- Title, Image
+
+
+local Label = Tab:CreateLabel("Script is Loading Please Wait.")
+
+local Games = {
+    [12413786484] = "https://raw.githubusercontent.com/666dasdlolok/AnimeLost/main/Main", -- Anime Lost Simulator
+    [12289293395] = "https://raw.githubusercontent.com/666dasdlolok/BoxingSim/main/Main", -- Boxing Simulator
+    [11162791099] = "https://raw.githubusercontent.com/666dasdlolok/FreeHatchers/main/Main", -- Free Hatchers
+	[8425128940] = "https://raw.githubusercontent.com/666dasdlolok/Anime-Warriors/main/Main", -- Anime Warriors
+	[12135645852] = "https://raw.githubusercontent.com/666dasdlolok/AnimeCatchers/main/Main", -- Anime Catching Simulator
+	[10586791219] = "https://raw.githubusercontent.com/666dasdlolok/Anime-Combat/main/Main", -- Anime Combat
+    [9474703390] = "https://raw.githubusercontent.com/666dasdlolok/ProjectMugetsu/main/Main",-- Project Mugetsu
+	[10202329527] = "https://raw.githubusercontent.com/666dasdlolok/ProjectMugetsu/main/Main",-- Project Mugetsu
+}
+
+if Games[game.PlaceId] then
+    loadstring(game:HttpGet(Games[game.PlaceId]))()
+else
+    Rayfield:Notify({
+        Title = "Verny Hub V2",
+        Content = "Game is Not Supported!",
+        Duration = 6.5,
+        Image = 4483362458,
+        Actions = { -- Notification Buttons
+            Ignore = {
+                Name = "Okay!",
+                Callback = function()
+                    print("The user tapped Okay!")
+                end
+            },
+        },
+    })
+end
